@@ -12,13 +12,17 @@ A React Native app built with **Expo SDK 54** and **React Native Maps**, featuri
 git clone https://github.com/your-username/react-native-maps-app.git
 cd react-native-maps-app
 
-Installing Dependencies
+## Installing Dependencies
 
 npm install
 # or
 yarn install
 
-Run the app
+## Set up App Configuration
+
+npm run prepare
+
+## Run the app
 
 npm run android
 # or
