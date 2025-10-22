@@ -1,50 +1,69 @@
-# Welcome to your Expo app 👋
+# 🗺️ React Native Test
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native app built with **Expo SDK 54** and **React Native Maps**, featuring geolocation, custom markers, and smooth navigation across Android and iOS.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Getting Started
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### 1. Clone the repository
 
 ```bash
-npm run reset-project
-```
+git clone https://github.com/your-username/react-native-maps-app.git
+cd react-native-maps-app
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Installing Dependencies
 
-## Learn more
+npm install
+# or
+yarn install
 
-To learn more about developing your project with Expo, look at the following resources:
+Run the app
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+npm run android
+# or
+npm run ios
 
-## Join the community
+These commands are important because they trigger Expo’s prebuild process.
+That process generates native Android and iOS folders (android/ and ios/) and links any native dependencies automatically.
 
-Join our community of developers creating universal apps.
+This step is required for libraries like:
+- react-native-maps (uses native Google Maps SDK)
+- react-native-geolocation-service
+- react-native-device-info
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Without prebuilding, these modules won't be properly linked, and features like maps or GPS will not function as expected.
+
+Additional Required Setup
+
+To get the API KEY, you have to enable Maps SDK for Android & iOS and set up correctly through link below
+## https://console.cloud.google.com/apis/library?referrer=search&cloudshell=true&project=project-9f02ef04-6b5a-4836-b9d
+
+open your app.json and add
+{
+  "expo": {
+    "plugins": [
+      [
+        "react-native-maps",
+        {
+          "iosGoogleMapsApiKey": "YOUR_IOS_API_KEY",
+          "androidGoogleMapsApiKey": "YOUR_ANDROID_API_KEY"
+        }
+      ],
+      ...
+   ]
+  }
+}
+
+## react-native-geolocation-service
+
+Make sure permission below already added on app.json > android
+
+  "ACCESS_FINE_LOCATION",
+  "ACCESS_COARSE_LOCATION"
+
+open android/build.gradle put code below inside buildscript
+
+  ext {
+    playServicesLocationVersion = "21.0.1"
+  }
