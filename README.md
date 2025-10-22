@@ -34,7 +34,6 @@ That process generates native Android and iOS folders (android/ and ios/) and li
 This step is required for libraries like:
 - react-native-maps (uses native Google Maps SDK)
 - react-native-geolocation-service
-- react-native-device-info
 
 Without prebuilding, these modules won't be properly linked, and features like maps or GPS will not function as expected.
 

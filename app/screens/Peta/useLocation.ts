@@ -2,7 +2,6 @@ import {
   PermissionsAndroid,
   Platform,
 } from "react-native";
-import DeviceInfo from "react-native-device-info";
 import Geolocation from "react-native-geolocation-service";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -35,10 +34,6 @@ const requestLocationPermission = async () => {
     return false;
   }
 };
-
-// const checkIfGPSEnabled = async () => {
-//   return await DeviceInfo.isLocationEnabled();
-// };
 
 const useLocation = () => {
   const watchId = useRef<number>(null);
